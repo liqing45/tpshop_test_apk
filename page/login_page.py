@@ -17,20 +17,15 @@ class LoginPage(BaseAction):
 
 
 
-    def input_username(self, text):
-        self.input(self.username_edit_text, text)
+    def input_username(self, username):
+        self.input(self.username_edit_text, username)
 
-    def input_password(self, text):
-        self.input(self.password_edit_text, text)
+    def input_password(self, password):
+        self.input(self.password_edit_text, password)
 
     def click_login(self):
         self.click(self.login_button)
 
-    def find_toast(driver, message, timeout=100):
-        """
-        # message: 预期要获取的toast的部分消息
-        """
-        message1 = By.XPATH, "//*[contains(@text,'" + message + "')]"  # 使用包含的方式定位
+    def is_toast_exist(self, message):
+        self.is_toast_exist(message)
 
-        element = WebDriverWait(driver, timeout, 0.1).until(lambda x: x.find_element(message1))
-        return element.text
